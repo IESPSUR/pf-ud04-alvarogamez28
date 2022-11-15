@@ -32,14 +32,14 @@ def eliminarProducto(request, pk):
     return render(request, 'tienda/listadoProductos.html', {'productos': productos})
 
 def editarProducto(request, pk):
-    post = get_object_or_404(Producto, pk=pk)
+    producto = get_object_or_404(Producto, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, instance=producto)
         if form.is_valid():
             producto = form.save(commit=False)
             producto.save()
             productos = Producto.objects.filter().order_by('nombreProducto')
             return render(request, 'tienda/listadoProductos.html', {'productos': productos})
     else:
-        form = PostForm(instance=post)
-    return render(request, 'blog/productoNuevo.html', {'form': form})
+        form = PostForm(instance=producto)
+    return render(request, 'tienda/nuevoProducto.html', {'form': form})

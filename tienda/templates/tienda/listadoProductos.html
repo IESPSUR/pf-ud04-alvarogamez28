@@ -19,7 +19,7 @@
 				<td>{{producto.marca}}</td>
 				<td>{{producto.unidadesProducto}}</td>
 				<td><a href="{% url 'eliminarProducto' pk=producto.pk %}"><button type="button" class="btn btn-danger">Eliminar</button></a>
-					<a href="{% url 'editarProducto' pk=producto.pk'}"><button type="button"  class="btn btn-warning">Editar</button> </a>
+					<a href="{% url 'editarProducto' pk=producto.pk %}"><button type="button"  class="btn btn-warning">Editar</button> </a>
 				</td>
 			</tr>
 		{% endfor %}
