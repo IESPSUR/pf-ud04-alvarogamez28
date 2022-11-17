@@ -2,7 +2,6 @@
 
 {% block content %}
 	<h2>Bienvenido al listado de los productos</h2>
-	<h3><button type="button" class="btn btn-outline-primary"><a href="{% url 'nuevoProducto' %}">Nuevo Producto</a></button></h3>
 	<table>
         <tr>
             <th>Nombre</th>
@@ -19,9 +18,7 @@
 				<td>{{producto.modelo}}</td>
 				<td>{{producto.marca}}</td>
 				<td>{{producto.unidadesProducto}}</td>
-				<td><a href="{% url 'eliminarProducto' pk=producto.pk %}"><button type="button" class="btn btn-danger">Eliminar</button></a>
-					<a href="{% url 'editarProducto' pk=producto.pk %}"><button type="button"  class="btn btn-warning">Editar</button> </a>
-				</td>
+				<td><a href="{% url 'checkout' pk=producto.pk %}"></a><button type="button"  class="btn btn-warning">Comprar</button></td>
 			</tr>
 		{% endfor %}
 	</table>

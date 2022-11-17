@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
-from .form import PostForm
+from .form import PostForm, CheckOutForm
+
 
 # Create your views here.
 def welcome(request):
@@ -23,7 +24,7 @@ def nuevoProducto(request):
             return render(request, 'tienda/listadoProductos.html', {'productos': productos})
     else:
         form = PostForm()
-    return render(request, 'tienda/producto_nuevo.html', {'form': form})
+    return render(request, 'tienda/nuevoProducto.html', {'form': form})
 
 def eliminarProducto(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
@@ -43,3 +44,9 @@ def editarProducto(request, pk):
     else:
         form = PostForm(instance=producto)
     return render(request, 'tienda/nuevoProducto.html', {'form': form})
+
+
+def compraProductos(request):
+    productos = Producto.objects.filter().order_by('nombreProducto')
+    return render(request, 'tienda/compraProductos.html', {'productos': productos})
+

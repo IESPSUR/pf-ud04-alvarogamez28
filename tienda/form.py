@@ -6,4 +6,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = ('nombreProducto', 'modelo', 'unidadesProducto', 'precio', 'detalles', 'marca',)
+        fields = "__all__"
+
+class CheckOutForm(forms.Form):
+    unidades = forms.FloatField(label='unidades')
