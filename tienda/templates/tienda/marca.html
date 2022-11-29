@@ -1,0 +1,19 @@
+{% extends 'tienda/informes.html' %}
+
+{% block informes %}
+
+    <br><br>
+    <h2>Marcas diponibles</h2>
+    <div>
+        {% for marcas in marca %}
+            <a href="{% url 'productos_in_marca' marca.nombreMarca %}" class="btn btn-primary">
+                {{ marcas.nombremarca }}
+            </a>
+        {% endfor %}
+    </div>
+    <div>
+        {% block listaproductos %}
+        {% endblock %}
+    </div>
+
+{% endblock %}

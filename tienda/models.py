@@ -5,13 +5,6 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
-
-class Compra(models.Model):
-    fecha = models.DateTimeField(default=timezone.now)
-    unidadesCompra = models.IntegerField()
-    importe = models.IntegerField()
-
-
 class Marca(models.Model):
     nombreMarca = models.TextField()
     def __str__(self):
@@ -27,3 +20,11 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombreProducto
 
+class Compra(models.Model):
+    fecha = models.DateTimeField(default=timezone.now)
+    importe = models.IntegerField()
+    unidadesCompra = models.IntegerField()
+    producto = models.ForeignKey(Producto, models.PROTECT)
+
+    def __str__(self):
+        return self.producto.nombreProducto

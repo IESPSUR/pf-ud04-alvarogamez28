@@ -1,6 +1,7 @@
+import calculation
 from django import forms
 
-from .models import Producto
+from .models import Producto, Compra
 
 class PostForm(forms.ModelForm):
 
@@ -8,5 +9,11 @@ class PostForm(forms.ModelForm):
         model = Producto
         fields = "__all__"
 
-class CheckOutForm(forms.Form):
-    unidades = forms.FloatField(label='unidades')
+class CompraForm(forms.ModelForm):
+    precio = forms.DecimalField(disabled=True)
+    unidadesProducto = forms.DecimalField()
+    importe = forms.DecimalField(widget=calculation.FormulaInput('unidadesProducto*precio'))
+    class Meta:
+        model = Compra
+        model = Producto
+        fields = ('precio',)
